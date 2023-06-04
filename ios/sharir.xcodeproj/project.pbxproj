@@ -13,6 +13,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-sharir-sharirTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-sharir-sharirTests.a */; };
+		7BFEE1EC2A2D15BE00BB287E /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 7BFEE1EB2A2D15BE00BB287E /* Fonts */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		F27D5224C24640E18F4E33FB /* Queensides-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 974117442EFE4D1792115F70 /* Queensides-Medium.ttf */; };
 /* End PBXBuildFile section */
@@ -42,10 +43,11 @@
 		5709B34CF0A7D63546082F79 /* Pods-sharir.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sharir.release.xcconfig"; path = "Target Support Files/Pods-sharir/Pods-sharir.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-sharir-sharirTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sharir-sharirTests.debug.xcconfig"; path = "Target Support Files/Pods-sharir-sharirTests/Pods-sharir-sharirTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-sharir.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sharir.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BFEE1EB2A2D15BE00BB287E /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = sharir/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-sharir-sharirTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sharir-sharirTests.release.xcconfig"; path = "Target Support Files/Pods-sharir-sharirTests/Pods-sharir-sharirTests.release.xcconfig"; sourceTree = "<group>"; };
+		974117442EFE4D1792115F70 /* Queensides-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Queensides-Medium.ttf"; path = "../src/assets/fonts/Queensides-Medium.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		974117442EFE4D1792115F70 /* Queensides-Medium.ttf */ = {isa = PBXFileReference; name = "Queensides-Medium.ttf"; path = "../src/assets/fonts/Queensides-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		13B07FAE1A68108700A75B9A /* sharir */ = {
 			isa = PBXGroup;
 			children = (
+				7BFEE1EB2A2D15BE00BB287E /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -140,6 +143,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8F22984871234CAD89D3E443 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				974117442EFE4D1792115F70 /* Queensides-Medium.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,15 +161,6 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		8F22984871234CAD89D3E443 /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				974117442EFE4D1792115F70 /* Queensides-Medium.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -257,6 +259,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				F27D5224C24640E18F4E33FB /* Queensides-Medium.ttf in Resources */,
+				7BFEE1EC2A2D15BE00BB287E /* Fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

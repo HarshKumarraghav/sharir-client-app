@@ -34,7 +34,7 @@ const HomeUI = () => {
             <TouchableOpacity
               className=""
               onPress={() => navigation.navigate('login')}>
-              <Text className="font-semibold text-yellow-600">Log In</Text>
+              <Text className="font-semibold text-yellow-500"> Login</Text>
             </TouchableOpacity>
           </View>
         </View>
