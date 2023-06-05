@@ -8,7 +8,7 @@ const SignUpUI = () => {
   return (
     <View className="flex-1 bg-background">
       <SafeAreaView className="flex">
-        <View className="flex flex-row justify-start">
+        <View className="flex-row justify-start">
           <TouchableOpacity
             className="bg-primary p-2 rounded-tr-2xl rounded-bl-2xl ml-4"
             onPress={() => navigation.navigate('home')}>
@@ -17,9 +17,9 @@ const SignUpUI = () => {
         </View>
         <View className="flex-row justify-center">
           <Image
-            source={require('../../assets/Auth/login.png')}
+            source={require('../../assets/Auth/Signup.png')}
             style={{
-              width: 300,
+              width: 200,
               height: 200,
             }}
           />
@@ -37,6 +37,14 @@ const SignUpUI = () => {
             className="p-4 bg-gray-100 text-gray-700 rounded-xl"
             value={''}
             placeholder="Enter the User Name"
+          />
+          <Text className="ml-4 text-gray-700">Enter the Phone Number</Text>
+          <TextInput
+            className="p-4 bg-gray-100 text-gray-700 rounded-xl"
+            value={''}
+            placeholder="Phone Number"
+            keyboardType="numeric"
+            maxLength={10}
           />
           <Text className="ml-4 text-gray-700">Email Address</Text>
           <TextInput

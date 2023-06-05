@@ -3,7 +3,7 @@ import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
-const LoginUI = () => {
+const PhoneUI = () => {
   const navigation = useNavigation();
   return (
     <View className="flex-1 bg-background">
@@ -15,7 +15,7 @@ const LoginUI = () => {
             <MaterialIcons name="arrow-back" size={20} color="white" />
           </TouchableOpacity>
         </View>
-        <View className="flex-row justify-center">
+        <View className="flex-col items-center justify-center">
           <Image
             source={require('../../assets/Auth/login.png')}
             style={{
@@ -32,29 +32,19 @@ const LoginUI = () => {
           borderTopRightRadius: 50,
         }}>
         <View className="form space-y-2">
-          <Text className="ml-4 text-gray-700">Email Address</Text>
+          <Text className="ml-4 text-gray-700">Enter the Phone Number</Text>
           <TextInput
-            className="p-4 bg-gray-100 text-gray-700 rounded-xl"
+            className="p-4 bg-gray-100 text-gray-700 rounded-xl mb-5"
             value={''}
-            placeholder="Enter the Email"
+            placeholder="Phone Number"
+            keyboardType="numeric"
+            maxLength={10}
           />
-          <Text className="ml-4 text-gray-700">Password</Text>
-          <TextInput
-            className="p-4 bg-gray-100 text-gray-700 rounded-xl"
-            secureTextEntry={true}
-            value={''}
-            placeholder="Enter the Password"
-          />
-          <TouchableOpacity
-            className="flex items-end mb-5"
-            onPress={() => navigation.navigate('phone')}>
-            <Text className="text-gray-700">login without Password?</Text>
-          </TouchableOpacity>
           <TouchableOpacity
             className="py-3 bg-primary  flex justify-center rounded-xl shadow-sm"
-            onPress={() => navigation.navigate('home')}>
+            onPress={() => navigation.navigate('otp')}>
             <Text className="text-white text-xl font-bold text-center">
-              Login
+              Continue
             </Text>
           </TouchableOpacity>
           <View className="flex-row justify-center items-center">
@@ -70,11 +60,11 @@ const LoginUI = () => {
           </View>
 
           <View className="flex-row justify-center">
-            <Text className="text-gray-700">Don't have an account?</Text>
+            <Text className="text-gray-700">Login with password?</Text>
             <TouchableOpacity
               className=""
-              onPress={() => navigation.navigate('signup')}>
-              <Text className="font-semibold text-primary"> Sign Up</Text>
+              onPress={() => navigation.navigate('login')}>
+              <Text className="font-semibold text-primary"> Login</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -83,4 +73,4 @@ const LoginUI = () => {
   );
 };
 
-export default LoginUI;
+export default PhoneUI;
