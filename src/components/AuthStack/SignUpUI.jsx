@@ -5,6 +5,11 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 const SignUpUI = ({signupInfo, setSignupInfo, SinupHandler}) => {
   const [validationErrors, setValidationErrors] = useState({});
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  /* The `useEffect` hook is used to update the state of `isButtonDisabled` whenever there is a change in
+the `signupInfo` object. It checks if any of the required fields (`username`, `phone`, `email`,
+`password`) are empty or not. If any of these fields are empty, `isButtonDisabled` is set to `true`,
+which disables the sign-up button. If all the required fields have values, `isButtonDisabled` is set
+to `false`, which enables the sign-up button. */
   useEffect(() => {
     setIsButtonDisabled(
       !signupInfo.username ||
@@ -13,6 +18,12 @@ const SignUpUI = ({signupInfo, setSignupInfo, SinupHandler}) => {
         !signupInfo.password,
     );
   }, [signupInfo]);
+  /**
+   * The function validates user input for a signup form and returns true if there are no errors.
+   * @returns The function `validateInput` is returning a boolean value indicating whether there are any
+   * validation errors or not. It returns `true` if there are no validation errors, and `false` if there
+   * are any validation errors.
+   */
   const validateInput = () => {
     const errors = {};
 
@@ -57,6 +68,9 @@ const SignUpUI = ({signupInfo, setSignupInfo, SinupHandler}) => {
     return Object.keys(errors).length === 0;
   };
 
+  /**
+   * The function handles sign up by validating input and sending the data to a handler function.
+   */
   const handleSignUp = () => {
     if (validateInput()) {
       const reqData = {
@@ -66,11 +80,16 @@ const SignUpUI = ({signupInfo, setSignupInfo, SinupHandler}) => {
         password: signupInfo.password,
       };
       SinupHandler(reqData);
-      console.log('Sign up successful.', reqData);
     } else {
       console.log('Sign up failed. Please fix the validation errors.');
     }
   };
+  /* This is the UI component for a sign-up form in a React Native app. It includes various input fields
+for the user to enter their information, such as their username, phone number, email, and password.
+It also includes validation for each input field to ensure that the user enters valid information.
+Once the user has entered all the required information, they can click the "Sign Up" button to
+submit their information and create an account. The component also includes a link to the login page
+for users who already have an account. */
   return (
     <View className="flex-1 bg-background">
       <SafeAreaView className="flex">
@@ -117,9 +136,7 @@ const SignUpUI = ({signupInfo, setSignupInfo, SinupHandler}) => {
             onChangeText={text => setSignupInfo({...signupInfo, phone: text})}
           />
           {validationErrors.phone && (
-            <Text style={{color: 'red', marginLeft: 4}}>
-              {validationErrors.phone}
-            </Text>
+            <Text className="text-red-600 ml-5">{validationErrors.phone}</Text>
           )}
           <Text className="ml-4 text-gray-700">Email Address</Text>
           <TextInput
@@ -130,9 +147,7 @@ const SignUpUI = ({signupInfo, setSignupInfo, SinupHandler}) => {
             placeholder="Enter the Email"
           />
           {validationErrors.email && (
-            <Text style={{color: 'red', marginLeft: 4}}>
-              {validationErrors.email}
-            </Text>
+            <Text className="text-red-600 ml-5">{validationErrors.email}</Text>
           )}
           <Text className="ml-4 text-gray-700">Password</Text>
           <TextInput
@@ -145,7 +160,7 @@ const SignUpUI = ({signupInfo, setSignupInfo, SinupHandler}) => {
             placeholder="Enter the Password"
           />
           {validationErrors.password && (
-            <Text style={{color: 'red', marginLeft: 4}}>
+            <Text className="text-red-600 ml-5">
               {validationErrors.password}
             </Text>
           )}
