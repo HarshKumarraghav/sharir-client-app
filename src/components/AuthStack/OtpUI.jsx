@@ -1,9 +1,10 @@
-import {View, TouchableOpacity, Text, Image, TextInput} from 'react-native';
-import React, {useRef} from 'react';
+import {View, TouchableOpacity, Text, TextInput} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
-const OtpUI = ({phoneNumber}) => {
+const OtpUI = ({phoneNumber, OtpHandler}) => {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const navigation = useNavigation();
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -11,13 +12,28 @@ const OtpUI = ({phoneNumber}) => {
   const ref4 = useRef(null);
   const ref5 = useRef(null);
   const ref6 = useRef(null);
-  const [otp, setOtp] = React.useState('');
-  const [input1, setInput1] = React.useState('');
-  const [input2, setInput2] = React.useState('');
-  const [input3, setInput3] = React.useState('');
-  const [input4, setInput4] = React.useState('');
-  const [input5, setInput5] = React.useState('');
-  const [input6, setInput6] = React.useState('');
+  const [input1, setInput1] = useState('');
+  const [input2, setInput2] = useState('');
+  const [input3, setInput3] = useState('');
+  const [input4, setInput4] = useState('');
+  const [input5, setInput5] = useState('');
+  const [input6, setInput6] = useState('');
+  useEffect(() => {
+    setIsButtonDisabled(
+      !input1 || !input2 || !input3 || !input4 || !input5 || !input6,
+    );
+  }, [input1, input2, input3, input4, input5, input6]);
+
+  const HandleOtp = () => {
+    const reqData = {
+      user: {
+        phoneNumber: phoneNumber,
+      },
+      code: `${input1 + input2 + input3 + input4 + input5 + input6}`,
+    };
+    OtpHandler(reqData);
+  };
+
   return (
     <View className="flex-1 bg-background">
       <SafeAreaView className="flex">
@@ -150,13 +166,11 @@ const OtpUI = ({phoneNumber}) => {
           </View>
 
           <TouchableOpacity
-            className="py-3 bg-primary  flex justify-center rounded-xl shadow-sm"
-            onPress={() =>
-              console.log(
-                'otp',
-                `${input1 + input2 + input3 + input4 + input5 + input6}`,
-              )
-            }>
+            disabled={isButtonDisabled}
+            className={`py-3 bg-primary  flex justify-center rounded-xl  ${
+              isButtonDisabled ? 'opacity-50' : ''
+            }`}
+            onPress={HandleOtp}>
             <Text className="text-white text-xl font-bold text-center">
               Submit
             </Text>
