@@ -24,6 +24,7 @@ const AuthProvider = ({children}: any) => {
   };
   const signOut = async () => {
     try {
+      await AsyncStorage.removeItem('isLoggedIn');
       await AsyncStorage.removeItem('access_token');
       setAuthData(null);
     } catch (e) {
