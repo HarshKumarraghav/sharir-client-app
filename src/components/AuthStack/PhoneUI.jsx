@@ -1,9 +1,34 @@
 import {View, TouchableOpacity, Text, Image, TextInput} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
-const PhoneUI = () => {
+const PhoneUI = ({phone, setPhone, PhoneNumberHandler}) => {
+  const [validationErrors, setValidationErrors] = useState({});
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  useEffect(() => {
+    setIsButtonDisabled(!phone);
+  }, [phone]);
+  const validateInput = () => {
+    const errors = {};
+    if (!phone) {
+      errors.phone = 'Please enter a phone number';
+    } else if (phone.length !== 10 || !/^\d+$/.test(phone)) {
+      errors.phone = 'Please enter a valid 10-digit phone number';
+    }
+    setValidationErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const HandleSubmit = () => {
+    if (validateInput()) {
+      const actualPhone = '+91' + phone;
+      PhoneNumberHandler(actualPhone);
+    } else {
+      console.log('Please enter valid credentials', validationErrors);
+    }
+  };
+
   const navigation = useNavigation();
   return (
     <View className="flex-1 bg-background">
@@ -35,14 +60,22 @@ const PhoneUI = () => {
           <Text className="ml-4 text-gray-700">Enter the Phone Number</Text>
           <TextInput
             className="p-4 bg-gray-100 text-gray-700 rounded-xl mb-5"
-            value={''}
+            value={phone}
+            onChangeText={text => setPhone(text)}
             placeholder="Phone Number"
             keyboardType="numeric"
             maxLength={10}
           />
+          {validationErrors.phone && (
+            <Text className="text-red-600 ml-5">{validationErrors.phone}</Text>
+          )}
+
           <TouchableOpacity
-            className="py-3 bg-primary  flex justify-center rounded-xl shadow-sm"
-            onPress={() => navigation.navigate('otp')}>
+            className={`py-3 bg-primary  flex justify-center rounded-xl  ${
+              isButtonDisabled ? 'opacity-50' : ''
+            }`}
+            onPress={HandleSubmit}
+            disabled={isButtonDisabled}>
             <Text className="text-white text-xl font-bold text-center">
               Continue
             </Text>

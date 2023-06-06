@@ -3,20 +3,12 @@ import LoginUI from '../components/AuthStack/LoginUI';
 import {SHARIR_API} from '../../Service/Api/API';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useAuth} from '../Context/AuthContext';
-import {useNavigation, NavigationProp} from '@react-navigation/native';
 type LoginInfo = {
   phonenumber: string;
   password: string;
 };
-type RootStackParamList = {
-  login: undefined;
-};
-type LoginScreenProps = {
-  navigation: NavigationProp<RootStackParamList, 'login'>;
-};
 
 const LoginScreen = () => {
-  const navigation = useNavigation<LoginScreenProps['navigation']>();
   const {setAuthData} = useAuth();
   const [loginInfo, setLoginInfo] = useState({
     phonenumber: '',

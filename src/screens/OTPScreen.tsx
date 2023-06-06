@@ -1,11 +1,10 @@
-import {Text, View} from 'react-native';
-import React, {Component} from 'react';
+import {View, Text} from 'react-native';
+import React from 'react';
 import OtpUI from '../components/AuthStack/OtpUI';
-
-export class OTPScreen extends Component {
-  render() {
-    return <OtpUI />;
-  }
-}
+const OTPScreen = ({route}: any) => {
+  const phoneNumber = route.params.phone;
+  console.log('number', phoneNumber);
+  return <OtpUI phoneNumber={phoneNumber} />;
+};
 
 export default OTPScreen;

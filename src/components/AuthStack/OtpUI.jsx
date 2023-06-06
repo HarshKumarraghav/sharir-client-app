@@ -3,7 +3,7 @@ import React, {useRef} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {useNavigation} from '@react-navigation/native';
-const OtpUI = () => {
+const OtpUI = ({phoneNumber}) => {
   const navigation = useNavigation();
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -24,7 +24,7 @@ const OtpUI = () => {
         <View className="flex flex-row justify-start">
           <TouchableOpacity
             className="bg-primary p-2 rounded-tr-2xl rounded-bl-2xl ml-4"
-            onPress={() => navigation.navigate('home')}>
+            onPress={() => navigation.navigate('phone')}>
             <MaterialIcons name="arrow-back" size={20} color="white" />
           </TouchableOpacity>
         </View>
@@ -42,7 +42,7 @@ const OtpUI = () => {
         }}>
         <View className="form space-y-2">
           <Text className="ml-4 text-gray-700 text-xl font-semibold text-center mb-5">
-            We have sent the 6 digit OTP to your Phone Number
+            We have sent the 6 digit OTP to {phoneNumber}
           </Text>
           <View className="flex-row gap-x-2 justify-center mb-5">
             <TextInput
