@@ -2,7 +2,9 @@ import React, {useEffect, useState} from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {View, Text, Image, TouchableOpacity, TextInput} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {useNavigation} from '@react-navigation/native';
 const SignUpUI = ({signupInfo, setSignupInfo, SinupHandler}) => {
+  const navigation = useNavigation();
   const [validationErrors, setValidationErrors] = useState({});
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   /* The `useEffect` hook is used to update the state of `isButtonDisabled` whenever there is a change in
@@ -81,7 +83,7 @@ to `false`, which enables the sign-up button. */
       };
       SinupHandler(reqData);
     } else {
-      console.log('Sign up failed. Please fix the validation errors.');
+      console.log('Invalid input');
     }
   };
   /* This is the UI component for a sign-up form in a React Native app. It includes various input fields
