@@ -23,10 +23,8 @@ const LoginUI = ({loginInfo, setLoginInfo, LoginHandler}) => {
   };
   const validateInput = () => {
     const errors = {};
-
-    // Validate phone number
     if (!loginInfo.phonenumber) {
-      errors.phone = 'Please enter a phone number';
+      errors.phonenumber = 'Please enter a phone number';
     } else if (
       loginInfo.phonenumber.length !== 10 ||
       !/^\d+$/.test(loginInfo.phonenumber)
